@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="lib/moment/moment.min.js"></script>
+    <h2>Output Date</h2>
+    <div id="output"></div>
+    
+    <script type="text/javascript">
+    (function()
+    {
+      var Date = moment();
+      var eDisplayMoment = document.getElementById('output');
+      // display output in the preferred format
+      eDisplayMoment.innerHTML = Date.format('dddd, MMMM Do');
+    })();
+
+    //console.log(moment().format('MMMM Do YYYY, h a'));
+
+    </script>  
+
+ <h3>Output Hour</h3>
+ <div id="output2"></div>
+ <script type="text/javascript">
+  var t4hrs = (function()
+  {
+    
+    var Hour = moment();
+    var eDisplayMoment = document.getElementById('output2');
+    // display output in the preferred format
+    eDisplayMoment.innerHTML = Hour.format('HH');
+  })();
+  console.log(t4hrs);
+  </script>
+
+
+</body>
+</html>
+
+
+
+
+
