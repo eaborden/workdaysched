@@ -40,6 +40,8 @@ textarea{
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  padding-top: 10pxs;
+
 }
 
 .past {
@@ -59,17 +61,20 @@ textarea{
 
 .saveBtn {
   border-left: 1px solid black;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
   background-color: #06AED5;
   color: white;
 }
 
 .saveBtn i:hover {
+  color: black;
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
 
-td {
-  border: 1px solid red;
+
+#render {
+  border: 1px solid black;
+
 }

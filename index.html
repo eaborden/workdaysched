@@ -18,66 +18,92 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="style.css" />
     <script src="lib/moment/moment.min.js"></script>
     <title>Work Day Scheduler</title>
+
   </head>
 
   <body>
     <header class="jumbotron">
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
+
       <!--Not sure what the below code refers to-->
+      
       <p id="currentDay" class="lead"></p> 
 
-      <!--Thi sis where the data function begins using moment-->
+      <!--This is where the data function begins using moment.min.js-->
       
       <div id="output"></div>
       <script type="text/javascript">     
-      (function()
-      {
-        var Date = moment();
-        var eDisplayMoment = document.getElementById('output');
-        // display output in the preferred format
-        eDisplayMoment.innerHTML = Date.format('dddd, MMMM Do');
-      })();
       
     </script>
     </header>
-    <!-- <p id="myP" contenteditable="true">Try to change this text.</p>
-
-<button onclick="myFunction(this);">Disable content of p to be editable!</button>
-
-<p id="demo"></p> -->
 
 
     <div class="container">
       <!-- Timeblocks go here -->
       <!-- Each row needs three columns col1: hour col2: text input col3: lock button-->
-      <table class="table">
-          <tbody>
-          <tr>
-            <th scope="row">9:00 am</th>
-            <td id="pt-3-half" contenteditable="true"></td>
-            <td><button onclick="myFunction(this);">Disable content of p to be editable!</button></td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-          </tr>
-        </tbody>
-      </table>
-     
+      <!--The first column needs to show text from 9am to 5pm.  But the actual time needs to be 24hr time-->
+      <!--Need local storage to hold onto the column 2 input if refreshed, but is that what the contenteditable doing-->
+      <!--Do I need to create 9 rows and 3 columns manually, or does this incorporate a loop-->
+
+      <div class="row time-block">
+      <div data-hour ="9" class="hour col-sm-1">9AM</div> 
+      <textarea class = "description col-sm-10"></textarea>
+      <button class = "saveBtn col-sm-1"><i class="fas fa-lock"></i></button>
+      </div>
+      <div class="row time-block">
+        <div data-hour="10" class="hour col-sm-1">10AM</div> 
+      <textarea class = "description col-sm-10"></textarea>
+      <button class = "saveBtn col-sm-1"><i class="fas fa-lock"></i></button>
+      </div>
+      <div class="row time-block">
+        <div data-hour="11" class="hour col-sm-1">11AM</div> 
+      <textarea class = "description col-sm-10"></textarea>
+      <button class = "saveBtn col-sm-1"><i class="fas fa-lock"></i></button>
+      </div>
+      <div class="row time-block">
+        <div data-hour="12" class="hour col-sm-1">12PM</div> 
+      <textarea class = "description col-sm-10"></textarea>
+      <button class = "saveBtn col-sm-1"><i class="fas fa-lock"></i></button>
+      </div>
+      <div class="row time-block">
+        <div data-hour="13" class="hour col-sm-1">1PM</div> 
+      <textarea class = "description col-sm-10"></textarea>
+      <button class = "saveBtn col-sm-1"><i class="fas fa-lock"></i></button>
+      </div>
+      <div class="row time-block">
+        <div data-hour="14" class="hour col-sm-1">2PM</div> 
+      <textarea class = "description col-sm-10"></textarea>
+      <button class = "saveBtn col-sm-1"><i class="fas fa-lock"></i></button>
+      </div>
+      <div class="row time-block">
+        <div data-hour="15" class="hour col-sm-1">3PM</div> 
+      <textarea class = "description col-sm-10"></textarea>
+      <button class = "saveBtn col-sm-1"><i class="fas fa-lock"></i></button>
+      </div>
+      <div class="row time-block">
+        <div data-hour="16" class="hour col-sm-1">4PM</div>  
+      <textarea class = "description col-sm-10"></textarea>
+      <button class = "saveBtn col-sm-1"><i class="fas fa-lock"></i></button>
+      </div>
+      <div class="row time-block">
+      <div data-hour="17" class="hour col-sm-1">5PM</div> 
+      <textarea class = "description col-sm-10"></textarea>
+      <button class = "saveBtn col-sm-1"><i class="fas fa-lock"></i></button>
+      </div>
   </div>
-    <script src="script.js"></script>
+  <!-- <p><strong>rendertext</strong> <span id="renderText2"></span></p>     -->
+  <!--<textarea id = "render"></textarea>-->
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   </body>
+  
+
 </html>

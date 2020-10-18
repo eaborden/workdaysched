@@ -1,96 +1,75 @@
-const $tableID = $('#table');
- const $BTN = $('#export-btn');
- const $EXPORT = $('#export');
+(function()
+      {
+        var Date = moment();
+        var eDisplayMoment = document.getElementById('output');
+        // display output in the preferred format
+        eDisplayMoment.innerHTML = Date.format('dddd, MMMM Do');
+      })();
 
- const newTr = `
-<tr class="hide">
-  <td class="pt-3-half" contenteditable="true">Example</td>
-  <td class="pt-3-half" contenteditable="true">Example</td>
-  <td class="pt-3-half" contenteditable="true">Example</td>
-  <td class="pt-3-half" contenteditable="true">Example</td>
-  <td class="pt-3-half" contenteditable="true">Example</td>
-  // remove sort arrows
-//   
-  <td>
-    <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Remove</button></span>
-  </td>
-</tr>`;
+(function()
+      {
+        var Hour = moment();
+        var currrentHour = parseInt(Hour.format('HH'));
+        $(".time-block").each(function(){
+          //console.log($(this))
+          
+          //console.log($(Hour))
+          //console.log(($(this).first().attr("data-hour")))
+          var blockHour = parseInt($(this).children(0).data("hour"))
+          if(localStorage.getItem(blockHour))
+          {
+            $(this).children(".description").val(localStorage.getItem(blockHour))
+          }
 
- $('.table-add').on('click', 'i', () => {
+          if(blockHour < currrentHour){
+            $(this).addClass("past")
+          }
+          else if(blockHour === currrentHour){
+            $(this).removeClass("past")
+            $(this).addClass("present")
+          }
+          else{
+            $(this).removeClass("past")
+            $(this).removeClass("present")
+            $(this).addClass("future")
+          }
+          //console.log($(blockHour))
+          //console.log(blockHour)
+        }) 
+      
+      })()
+//------------------------------------------------
+//localStorage nightmare
+//------------------------------------------------
+$(".saveBtn").on("click",function(){
+  var blockHour = ($(this).siblings(".hour").data("hour"))
+  //var descriptiontext = ($(this).prev().data("description"))
+  var description = ($(this).siblings(".description").val())
+ 
+ 
+  //$(selector).siblings(filter)
 
-   const $clone = $tableID.find('tbody tr').last().clone(true).removeClass('hide table-line');
 
-   if ($tableID.find('tbody tr').length === 0) {
 
-     $('tbody').append(newTr);
-   }
+ //localStorage.setItem(descriptionText);
+// console.log(descriptionText);
+ 
 
-   $tableID.find('table').append($clone);
- });
+// console.log(blockHour);
+// console.log(description);
 
- $tableID.on('click', '.table-remove', function () {
 
-   $(this).parents('tr').detach();
- });
+localStorage.setItem(blockHour, description)
 
-//  $tableID.on('click', '.table-up', function () {
 
-//    const $row = $(this).parents('tr');
+})
 
-//    if ($row.index() === 0) {
-//      return;
-//    }
 
-//    $row.prev().before($row.get(0));
-//  });
-
-//  $tableID.on('click', '.table-down', function () {
-
-//    const $row = $(this).parents('tr');
-//    $row.next().after($row.get(0));
-//  });
-
- // A few jQuery helpers for exporting only
- jQuery.fn.pop = [].pop;
- jQuery.fn.shift = [].shift;
-
- $BTN.on('click', () => {
-
-   const $rows = $tableID.find('tr:not(:hidden)');
-   const headers = [];
-   const data = [];
-
-   // Get the headers (add special header logic here)
-   $($rows.shift()).find('th:not(:empty)').each(function () {
-
-     headers.push($(this).text().toLowerCase());
-   });
-
-   // Turn all existing rows into a loopable array
-   $rows.each(function () {
-     const $td = $(this).find('td');
-     const h = {};
-
-     // Use the headers from earlier to name our hash keys
-     headers.forEach((header, i) => {
-
-       h[header] = $td.eq(i).text();
-     });
-
-     data.push(h);
-   });
-
-   // Output the result
-   $EXPORT.text(JSON.stringify(data));
- });
-
- function myFunction(button) {
-  var x = document.getElementsById("pt-3-half");
-  if (x.contentEditable == "true") {
-    x.contentEditable = "false";
-    button.innerHTML = "Enable content of p to be editable!";
-  } else {
-    x.contentEditable = "true";
-    button.innerHTML = "Disable content of p to be editable!";
-  }
-}
+// document.getElementById("save").addEventListener("click", function ()
+//     {
+//         var user = document.getElementById("user").value ;
+//         //localStorage["user"] = user ;
+//         localStorage.setItem("user", user) ;
+//         alert("gmail id saved") ;
+//         console.log("gmail id saved")
+//     } , false);
